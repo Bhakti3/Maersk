@@ -1,0 +1,39 @@
+
+.card {
+	padding: 10px;
+	border: solid 1px #808080;
+	background-color: #c9cfe6;
+	display: inline-block;
+	border-radius: 0;
+	font-size: 30pt;
+	text-align: center;
+	color:#fff;
+}
+.card:nth-child(2),.card:nth-child(4),.card:nth-child(8){
+	background-color:#515875;
+}
+.card:nth-child(3),.card:nth-child(5),.card:nth-child(9){
+	background-color:#7381b9;
+}
+.mainCard{background: #f3f3f3;;padding: 5px;}
+
+@media only screen and (max-width: 960px) {
+	.mainCard{background:#fff;padding:0;}
+	.mainText{background:#333;padding:10px 0;color:#fff;text-align:center;}
+	.card1{
+		margin-top:60px;
+	}
+	.card2{
+		position:fixed;
+		top:55px;
+		text-align:center;
+	}
+	button.btn-block{width: 100px;display: inline;margin-top:0px !important;}
+	.card{background:#fff !important;color:#333;border-left:15px solid #c9cfe6;margin-bottom:10px;}
+	.card:nth-child(2),.card:nth-child(4),.card:nth-child(8){
+		border-left:15px solid #515875;
+	}
+	.card:nth-child(3),.card:nth-child(5),.card:nth-child(9){
+		border-left:15px solid #7381b9;
+	}
+}

@@ -1,0 +1,104 @@
+  <html>
+<head>
+	<title>Collabera</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+	<script>
+	var cards = ["1","2","3","4","5","6","7","8","9"];
+	var suits = ["diamonds"];
+	var deck = new Array();
+
+	function getDeck()
+	{
+		var deck = new Array();
+
+		for(var i = 0; i < suits.length; i++)
+		{
+			for(var x = 0; x < cards.length; x++)
+			{
+				var card = {Value: cards[x], Suit: suits[i]};
+				deck.push(card);
+			}
+		}
+
+		return deck;
+	}
+
+	function shuffle()
+	{
+		for (var i = 0; i < 10; i++)
+		{
+			var location1 = Math.floor((Math.random() * deck.length));
+			var location2 = Math.floor((Math.random() * deck.length));
+			var tmp = deck[location1];
+
+			deck[location1] = deck[location2];
+			deck[location2] = tmp;
+		}
+
+		renderDeck();
+	}
+	function sortMe(){
+		function compare(a, b) { 
+			if(a.Value < b.Value){
+					return -1;
+			}else if(a.Value > b.Value){
+					return 1;
+			}else{
+					return 0;
+			}
+		}
+		deck.sort(compare);	
+		renderDeck();
+	}
+
+	function renderDeck(){
+		document.getElementById('deck').innerHTML = '';
+		for(var i = 0; i < deck.length; i++)
+		{
+			var card = document.createElement("div");
+			var value = document.createElement("div");
+			card.className = "card col-lg-4 col-sm-12";
+			value.className = "value";
+
+			value.innerHTML = deck[i].Value;
+			card.appendChild(value);
+
+			document.getElementById("deck").appendChild(card);
+		}
+	}
+
+	function load()
+	{
+		deck = getDeck();
+		shuffle();
+		renderDeck();
+	}
+
+	window.onload = load;
+	</script>
+</head>
+
+<body>
+<div class="container">
+	<div class="row mainCard">
+		<div class="col-lg-12 mainText"><strong>Shuffle and sort</strong></div>
+		<div class="col-lg-8 col-sm-12 card1">
+			<div id="deck" class="row"></div>
+		</div>
+		<div class="col-lg-4 col-sm-12 card2">
+			<button type="button" class="btn btn-info btn-block" onclick="shuffle()">Shuffle</button>
+			<button type="button" class="btn btn-info btn-block" onclick="sortMe()">Sort</button>
+		</div>
+	</div>
+</div>	
+    
+</body>
+</html>
+
+              
